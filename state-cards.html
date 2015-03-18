@@ -1,0 +1,65 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="cards/state-card.html">
+
+<polymer-element name="state-cards">
+  <template>
+    <style>
+    :host {
+      display: block;
+      width: 100%;    
+    }
+
+    @media all and (min-width: 1020px) {
+      .state-card {
+        width: calc(50% - 44px);
+        margin: 8px 0 0 8px;
+      }
+    }
+
+    @media all and (min-width: 1356px) {
+      .state-card {
+        width: calc(33% - 38px);
+      }
+    }
+
+    @media all and (min-width: 1706px) {
+      .state-card {
+        width: calc(25% - 42px);
+      }
+    }
+
+    .no-states-content {
+      max-width: 500px;
+      background-color: #fff;
+      border-radius: 2px;
+      box-shadow: rgba(0, 0, 0, 0.098) 0px 2px 4px, rgba(0, 0, 0, 0.098) 0px 0px 3px;
+      padding: 16px;
+      margin: 16px auto;
+    }
+    </style>
+
+    <div horizontal layout wrap>
+      <template repeat="{{state in states}}">
+        <state-card class="state-card" stateObj={{state}}></state-card>
+        <!-- <div>I am a state</div> -->
+        <!-- <div>{{state}}</div>         -->
+      </template>
+
+<!--       <template if="{{states.length == 0}}">
+        <div class='no-states-content'>
+          <content></content>
+        </div>
+      </template> -->
+
+    </div>
+  </template>
+  <script>
+    Polymer('state-cards', {
+      ready: function() {
+        // populate the element’s data model
+        // (the salutations array)
+        this.states = ["Alpha","Beta","Gamma","Delta","Epsilon","Zeta","Eta","Theta","Iota","Kappa","Lambda","Mu","Nu","Xi","Omicron","Pi","Rho","Sigma","Tau","Upsilon","Phi","Chi","Psi","Omega"];
+      }
+    });
+  </script>  
+</polymer-element>
