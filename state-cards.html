@@ -56,6 +56,10 @@
   <script>
 
     function createStateObj(name, domain, lastChanged) {
+        var url = "";
+        if (name === "Eta") {
+            url = "http://graph.facebook.com/anne.t.frederiksen/picture";
+        }
       var obj = {
         name: name,
         entityDisplay:  name,
@@ -66,7 +70,7 @@
           return "display";
         },
         attributes: {
-          entity_picture: "http://graph.facebook.com/anne.t.frederiksen/picture"
+          entity_picture: url
         },
         lastChanged: new Date(lastChanged)
       };

@@ -16,7 +16,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <meta name="apple-mobile-web-app-capable" content="yes">
   
   <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
-    <link rel="import" href="resoureces/moment-js.html">
+    <link rel="import" href="resources/moment-js.html">
     <link rel="import" href="index-js.html">
 
   <link rel="import" href="bower_components/core-scaffold/core-scaffold.html">
@@ -24,6 +24,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <link rel="import" href="bower_components/core-menu/core-menu.html">
   <link rel="import" href="bower_components/core-item/core-item.html">
   <!-- <link rel="import" href="bower_components/paper-shadow/paper-shadow.html"> -->
+    <link rel="import" href="bower_components/core-style/core-style.html">
+    <link rel="import" href="bower_components/core-icon/core-icon.html">
+    <link rel="import" href="bower_components/paper-item/paper-item.html">
   <link rel="import" href="state-cards.html">
 
   <style>
@@ -51,8 +54,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     
     .content {
       background-color: #E5E5E5;
-      height: 5000px;
-      padding: 20px;
+/*      height: 5000px;
+      padding: 20px;*/
     }
     
     /* some default styles for mode="cover" on core-scaffold */
@@ -100,7 +103,50 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       margin: 16px auto;
     }*/
      
-    
+    /** brought over from homeassistant **/
+
+    core-header-panel {
+        background: #fafafa;
+        box-shadow: 1px 0 1px rgba(0, 0, 0, 0.1);
+        color: #757575;
+        overflow: hidden;
+    }
+
+    core-menu core-icon {
+        margin-right: 24px;
+    }
+
+    core-toolbar {
+        font-weight: normal;
+        padding-left: 24px;
+    }
+
+    core-menu {
+        overflow: scroll;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+    }
+
+    paper-item {
+        min-height: 53px;
+    }
+
+    .text {
+        padding: 16px;
+        border-top: 1px solid #e0e0e0;
+    }
+
+    .label {
+        font-size: 14px;
+    }
+
+    .dev-tools {
+        padding: 0 8px;
+    }
+
   </style>
   
 </head>
@@ -111,41 +157,56 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   
     <core-header-panel navigation flex mode="seamed">
       <core-toolbar>Toduo</core-toolbar>
-      <core-menu>
-        <core-item icon="settings" label="item1"></core-item>
-        <core-item icon="settings" label="item2"></core-item>
-      </core-menu>
+        <core-menu id="menu"
+                   selected="0" excludedLocalNames="div" on-core-select="{{menuSelect}}"
+                   layout vertical>
+            <paper-item data-panel="states">
+                <core-icon icon="apps"></core-icon>
+                States
+            </paper-item>
+            <paper-item data-panel="group">
+                <core-icon icon="homeassistant-24:group"></core-icon>
+                Groups
+            </paper-item>
+
+            <template if="{{hasHistoryComponent}}">
+                <paper-item data-panel="history">
+                    <core-icon icon="assessment"></core-icon>
+                    History
+                </paper-item>
+            </template>
+
+            <div flex></div>
+
+            <paper-item on-click="{{handleLogOutClick}}">
+                <core-icon icon="exit-to-app"></core-icon>
+                Log Out
+            </paper-item>
+
+            <div class='text' horizontal layout center>
+                <div flex>Streaming updates</div>
+                <stream-status></stream-status>
+            </div>
+
+            <div class='text label'>Developer Tools</div>
+            <div class='dev-tools' layout horizontal justified>
+                <paper-icon-button
+                        icon="settings-remote" data-panel='call-service'
+                        on-click="{{handleDevClick}}"></paper-icon-button>
+                <paper-icon-button
+                        icon="settings-ethernet" data-panel='set-state'
+                        on-click="{{handleDevClick}}"></paper-icon-button>
+                <paper-icon-button
+                        icon="settings-input-antenna" data-panel='fire-event'
+                        on-click="{{handleDevClick}}"></paper-icon-button>
+            </div>
+        </core-menu>
     </core-header-panel>
     
     <div tool>Title</div>
     
     <div class="content">
       <div horizontal="" layout="" wrap="" class="demo">
-<!--         <paper-shadow class="state-card" z="1">Chris</paper-shadow>
-        <paper-shadow class="state-card" z="1">Alpha</paper-shadow>
-        <paper-shadow class="state-card" z="1">Beta</paper-shadow>
-        <paper-shadow class="state-card" z="1">Gamma</paper-shadow>
-        <paper-shadow class="state-card" z="1">Delta</paper-shadow>
-        <paper-shadow class="state-card" z="1">Epsilon</paper-shadow>
-        <paper-shadow class="state-card" z="1">Zeta</paper-shadow>
-        <paper-shadow class="state-card" z="1">Eta</paper-shadow>
-        <paper-shadow class="state-card" z="1">Theta</paper-shadow>
-        <paper-shadow class="state-card" z="1">Iota</paper-shadow>
-        <paper-shadow class="state-card" z="1">Kappa</paper-shadow>
-        <paper-shadow class="state-card" z="1">Lambda</paper-shadow>
-        <paper-shadow class="state-card" z="1">Mu</paper-shadow>
-        <paper-shadow class="state-card" z="1">Nu</paper-shadow>
-        <paper-shadow class="state-card" z="1">Xi</paper-shadow>
-        <paper-shadow class="state-card" z="1">Omicron</paper-shadow>
-        <paper-shadow class="state-card" z="1">Pi</paper-shadow>
-        <paper-shadow class="state-card" z="1">Rho</paper-shadow>
-        <paper-shadow class="state-card" z="1">Sigma</paper-shadow>
-        <paper-shadow class="state-card" z="1">Tau</paper-shadow>
-        <paper-shadow class="state-card" z="1">Upsilon</paper-shadow>
-        <paper-shadow class="state-card" z="1">Phi</paper-shadow>
-        <paper-shadow class="state-card" z="1">Chi</paper-shadow>
-        <paper-shadow class="state-card" z="1">Psi</paper-shadow>
-        <paper-shadow class="state-card" z="1">Omega</paper-shadow>   -->    
             <state-cards></state-cards>
         </div>
     </div>
@@ -153,6 +214,66 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 
   </core-scaffold>
-  
+  <script>
+      Polymer('filler',{
+          selected: "states",
+          narrow: false,
+          hasHistoryComponent: false,
+
+          isStreaming: false,
+          hasStreamError: false,
+
+          attached: function() {
+              this.togglePanel = this.togglePanel.bind(this);
+
+              this.listenToStores(true);
+          },
+
+          detached: function() {
+              this.stopListeningToStores();
+          },
+
+          componentStoreChanged: function(componentStore) {
+              this.hasHistoryComponent = componentStore.isLoaded('history');
+          },
+
+          streamStoreChanged: function(streamStore) {
+              this.isStreaming = streamStore.isStreaming;
+              this.hasStreamError = streamStore.hasError;
+          },
+
+          menuSelect: function(ev, detail, sender) {
+              if (detail.isSelected) {
+                  this.selectPanel(detail.item);
+              }
+          },
+
+          handleDevClick: function(ev, detail, sender) {
+              this.$.menu.selected = -1;
+              this.selectPanel(ev.target);
+          },
+
+          selectPanel: function(element) {
+              var newChoice = element.dataset.panel;
+
+              if(newChoice !== this.selected) {
+                  this.togglePanel();
+                  this.selected = newChoice;
+              }
+          },
+
+          responsiveChanged: function(ev, detail, sender) {
+              this.narrow = detail.narrow;
+          },
+
+          togglePanel: function() {
+              this.$.drawer.togglePanel();
+          },
+
+          handleLogOutClick: function() {
+              authActions.logOut();
+          }
+      });
+  </script>
 </body>
 </html>

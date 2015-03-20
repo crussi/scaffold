@@ -19,11 +19,9 @@
     <script>
         Polymer({
             stateObjChanged: function(oldVal, newVal) {
-                console.log('stateObjChanged ... oldVal: ' + oldVal + ' newVal: ' + newVal + ' newVal.cardType() ' + newVal.cardType());
                 var cardContainer = this.$.cardContainer;
 
                 if (!newVal) {
-                    console.log('stateObjChanged ... !newVal');
                     if (cardContainer.lastChild) {
                         cardContainer.removeChild(cardContainer.lastChild);
                     }
@@ -31,7 +29,6 @@
                 }
 
                 if (!oldVal || oldVal.cardType() != newVal.cardType()) {
-                    console.log('stateObjChanged ...!oldVal');
                     if (cardContainer.lastChild) {
                         console.log('in here');
                         cardContainer.removeChild(cardContainer.lastChild);
@@ -43,7 +40,6 @@
 
                 } else {
 
-                    console.log('stateObjChanged ...else');
                     cardContainer.lastChild.stateObj = newVal;
 
                 }
