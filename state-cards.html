@@ -55,11 +55,11 @@
   </template>
   <script>
 
-    function createStateObj(name) {
+    function createStateObj(name, domain, lastChanged) {
       var obj = {
         name: name,
         entityDisplay:  name,
-        domain: "sun",
+        domain: domain,
         state: "idle",
         // how to render the card for this state
         cardType: function () {
@@ -68,7 +68,7 @@
         attributes: {
           entity_picture: "http://graph.facebook.com/anne.t.frederiksen/picture"
         },
-        lastChanged: new Date('03/17/2015')
+        lastChanged: new Date(lastChanged)
       };
       return obj;
     }
@@ -78,34 +78,30 @@
         // populate the element’s data model
         // (the salutations array)
         this.states = [];
-        //this.states = ["Alpha","Beta","Gamma","Delta","Epsilon","Zeta","Eta","Theta","Iota",
-//          "Kappa","Lambda","Mu","Nu","Xi","Omicron","Pi","Rho","Sigma","Tau","Upsilon","Phi",
-//          "Chi","Psi","Omega"];
-        var st = createStateObj("Alpha");
-        this.states.push(createStateObj("Alpha"));
-        this.states.push(createStateObj("Beta"));
-        this.states.push(createStateObj("Gamma"));
-        this.states.push(createStateObj("Delta"));
-        this.states.push(createStateObj("Epsilon"));
-        this.states.push(createStateObj("Zeta"));
-        this.states.push(createStateObj("Eta"));
-        this.states.push(createStateObj("Theta"));
-        this.states.push(createStateObj("Iota"));
-        this.states.push(createStateObj("Kappa"));
-        this.states.push(createStateObj("Lambda"));
-        this.states.push(createStateObj("Mu"));
-        this.states.push(createStateObj("Nu"));
-        this.states.push(createStateObj("Xi"));
-        this.states.push(createStateObj("Omicron"));
-        this.states.push(createStateObj("Pi"));
-        this.states.push(createStateObj("Rho"));
-        this.states.push(createStateObj("Sigma"));
-        this.states.push(createStateObj("Tau"));
-        this.states.push(createStateObj("Upsilon"));
-        this.states.push(createStateObj("Phi"));
-        this.states.push(createStateObj("Chi"));
-        this.states.push(createStateObj("Psi"));
-        this.states.push(createStateObj("Omega"));
+        this.states.push(createStateObj("Alpha","sun","03/01/2015"));
+        this.states.push(createStateObj("Beta","light","03/01/2015"));
+        this.states.push(createStateObj("Gamma","simple_alarm","03/01/2015"));
+        this.states.push(createStateObj("Delta","notify","03/01/2015"));
+        this.states.push(createStateObj("Epsilon","thermostat","03/01/2015"));
+        this.states.push(createStateObj("Zeta","sensor","02/01/2015"));
+        this.states.push(createStateObj("Eta","configurator","02/01/2015"));
+        this.states.push(createStateObj("Theta","conversation","02/01/2015"));
+        this.states.push(createStateObj("Iota","bookmark-outline","02/01/2015"));
+        this.states.push(createStateObj("Kappa","homeassistant","01/01/2015"));
+        this.states.push(createStateObj("Lambda","group","01/01/2015"));
+        this.states.push(createStateObj("Mu","device_tracker","01/01/2015"));
+        this.states.push(createStateObj("Nu","switch","12/01/2014"));
+        this.states.push(createStateObj("Xi","media_player","11/01/2014"));
+        this.states.push(createStateObj("Omicron","sun","10/01/2014"));
+        this.states.push(createStateObj("Pi","light","09/01/2014"));
+        this.states.push(createStateObj("Rho","simple_alarm","08/01/2014"));
+        this.states.push(createStateObj("Sigma","notify","07/01/2014"));
+        this.states.push(createStateObj("Tau","thermostat","06/01/2014"));
+        this.states.push(createStateObj("Upsilon","sensor","05/01/2014"));
+        this.states.push(createStateObj("Phi","configurator","04/01/2014"));
+        this.states.push(createStateObj("Chi","bookmark-outline","03/01/2014"));
+        this.states.push(createStateObj("Psi","sun","02/01/2014"));
+        this.states.push(createStateObj("Omega","sun","01/01/2014"));
 
       }
     });
