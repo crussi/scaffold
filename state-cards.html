@@ -54,11 +54,59 @@
     </div>
   </template>
   <script>
+
+    function createStateObj(name) {
+      var obj = {
+        name: name,
+        entityDisplay:  name,
+        domain: "sun",
+        state: "idle",
+        // how to render the card for this state
+        cardType: function () {
+          return "display";
+        },
+        attributes: {
+          entity_picture: "http://graph.facebook.com/anne.t.frederiksen/picture"
+        },
+        lastChanged: new Date('03/17/2015')
+      };
+      return obj;
+    }
+
     Polymer('state-cards', {
       ready: function() {
         // populate the element’s data model
         // (the salutations array)
-        this.states = ["Alpha","Beta","Gamma","Delta","Epsilon","Zeta","Eta","Theta","Iota","Kappa","Lambda","Mu","Nu","Xi","Omicron","Pi","Rho","Sigma","Tau","Upsilon","Phi","Chi","Psi","Omega"];
+        this.states = [];
+        //this.states = ["Alpha","Beta","Gamma","Delta","Epsilon","Zeta","Eta","Theta","Iota",
+//          "Kappa","Lambda","Mu","Nu","Xi","Omicron","Pi","Rho","Sigma","Tau","Upsilon","Phi",
+//          "Chi","Psi","Omega"];
+        var st = createStateObj("Alpha");
+        this.states.push(createStateObj("Alpha"));
+        this.states.push(createStateObj("Beta"));
+        this.states.push(createStateObj("Gamma"));
+        this.states.push(createStateObj("Delta"));
+        this.states.push(createStateObj("Epsilon"));
+        this.states.push(createStateObj("Zeta"));
+        this.states.push(createStateObj("Eta"));
+        this.states.push(createStateObj("Theta"));
+        this.states.push(createStateObj("Iota"));
+        this.states.push(createStateObj("Kappa"));
+        this.states.push(createStateObj("Lambda"));
+        this.states.push(createStateObj("Mu"));
+        this.states.push(createStateObj("Nu"));
+        this.states.push(createStateObj("Xi"));
+        this.states.push(createStateObj("Omicron"));
+        this.states.push(createStateObj("Pi"));
+        this.states.push(createStateObj("Rho"));
+        this.states.push(createStateObj("Sigma"));
+        this.states.push(createStateObj("Tau"));
+        this.states.push(createStateObj("Upsilon"));
+        this.states.push(createStateObj("Phi"));
+        this.states.push(createStateObj("Chi"));
+        this.states.push(createStateObj("Psi"));
+        this.states.push(createStateObj("Omega"));
+
       }
     });
   </script>  

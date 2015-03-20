@@ -1,5 +1,5 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
-<!-- <link rel="import" href="state-card-content.html"> -->
+<link rel="import" href="state-card-content.html">
 
 <polymer-element name="state-card" attributes="stateObj" on-click="cardClicked">
 <template>
@@ -18,8 +18,8 @@
     }
   </style>
 
-  <!-- <state-card-content stateObj={{stateObj}}></state-card-content> -->
-  <div>{{stateObj}}</div>
+   <state-card-content stateObj={{stateObj}}></state-card-content>
+  <!--<div>{{stateObj}}</div>-->
 </template>
 <script>
 // var uiActions = window.hass.uiActions;
@@ -33,7 +33,7 @@ Polymer({
   cardClicked: function() {
     //uiActions.showMoreInfoDialog(this.stateObj.entityId);
     console.log('card clicked ...');
-  },
+  }
 });
 </script>
 </polymer-element>

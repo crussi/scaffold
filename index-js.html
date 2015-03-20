@@ -1,0 +1,21 @@
+<!--<script src="../home-assistant-js/dist/homeassistant.min.js"></script>-->
+<!--<script src="../home-assistant-js/src/homeassistant.js"></script>-->
+
+<script>
+    (function() {
+
+        // UI specific util methods
+        window.hass = {};
+        window.hass.uiUtil = {};
+        window.hass.util = {
+            parseDateTime: function (datetime) {
+            //[time, date] = datetime.split(" ");
+            //[hour, minute, second] = time.split(":");
+            //[day, month, year] = date.split("-");
+
+            //return new Date(year, parseInt(month)-1, day, hour, minute, second);
+            return new Date(2015,3,17,12,12,12);
+            }
+        };
+    })();
+</script>

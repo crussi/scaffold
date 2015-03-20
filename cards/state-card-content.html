@@ -1,0 +1,53 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+
+<link rel="import" href="state-card-display.html">
+<!--<link rel="import" href="state-card-toggle.html">
+<link rel="import" href="state-card-thermostat.html">
+<link rel="import" href="state-card-configurator.html">-->
+
+<polymer-element name="state-card-content" attributes="stateObj">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+        </style>
+
+        <div id='cardContainer'></div>
+    </template>
+    <script>
+        Polymer({
+            stateObjChanged: function(oldVal, newVal) {
+                console.log('stateObjChanged ... oldVal: ' + oldVal + ' newVal: ' + newVal + ' newVal.cardType() ' + newVal.cardType());
+                var cardContainer = this.$.cardContainer;
+
+                if (!newVal) {
+                    console.log('stateObjChanged ... !newVal');
+                    if (cardContainer.lastChild) {
+                        cardContainer.removeChild(cardContainer.lastChild);
+                    }
+                    return;
+                }
+
+                if (!oldVal || oldVal.cardType() != newVal.cardType()) {
+                    console.log('stateObjChanged ...!oldVal');
+                    if (cardContainer.lastChild) {
+                        console.log('in here');
+                        cardContainer.removeChild(cardContainer.lastChild);
+                    }
+
+                    var stateCard = document.createElement("state-card-" + newVal.cardType());
+                    stateCard.stateObj = newVal;
+                    cardContainer.appendChild(stateCard);
+
+                } else {
+
+                    console.log('stateObjChanged ...else');
+                    cardContainer.lastChild.stateObj = newVal;
+
+                }
+            }
+        });
+    </script>
+</polymer-element>
