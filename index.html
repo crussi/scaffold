@@ -27,7 +27,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <link rel="import" href="bower_components/core-style/core-style.html">
     <link rel="import" href="bower_components/core-icon/core-icon.html">
     <link rel="import" href="bower_components/paper-item/paper-item.html">
-  <link rel="import" href="state-cards.html">
+    <link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
+    <link rel="import" href="state-cards.html">
 
   <style>
 
@@ -66,43 +67,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     core-scaffold[mode=cover] .content {
       margin: 20px 100px 20px 0;
     }
-    /* to be host: */
-/*    .state-card {
-      display: block;
-      width: 100%;
-      background-color: white;
-      padding: 12px;
-      margin: 2px;      
-    }    
-
-    @media all and (min-width: 1020px) {
-      .state-card {
-        width: calc(50% - 44px);
-        margin: 8px 0 0 8px;
-      }
-    }
-
-    @media all and (min-width: 1356px) {
-      .state-card {
-        width: calc(33% - 38px);
-      }
-    }
-
-    @media all and (min-width: 1706px) {
-      .state-card {
-        width: calc(25% - 42px);
-      }
-    }
-
-    .no-states-content {
-      max-width: 500px;
-      background-color: #fff;
-      border-radius: 2px;
-      box-shadow: rgba(0, 0, 0, 0.098) 0px 2px 4px, rgba(0, 0, 0, 0.098) 0px 0px 3px;
-      padding: 16px;
-      margin: 16px auto;
-    }*/
-     
     /** brought over from homeassistant **/
 
     core-header-panel {
@@ -234,7 +198,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           },
 
           componentStoreChanged: function(componentStore) {
-              this.hasHistoryComponent = componentStore.isLoaded('history');
+              //this.hasHistoryComponent = componentStore.isLoaded('history');
+              this.hasHistoryComponent = true;
           },
 
           streamStoreChanged: function(streamStore) {
